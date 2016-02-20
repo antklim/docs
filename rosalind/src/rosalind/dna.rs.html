@@ -126,7 +126,7 @@
 <span class='doccomment'>//! Module for `Counting DNA Nucleotides`</span>
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
-<span class='kw'>use</span> <span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>RosalindResult</span>;
 <span class='kw'>use</span> <span class='ident'>RosalindError</span>::<span class='ident'>UnknownNucleotide</span>;
 
 <span class='doccomment'>/// This structure contains amount of each nucleotide in DNA</span>
@@ -159,7 +159,7 @@
 <span class='doccomment'>/// assert_eq!(count_dna_nucleotides(&quot;\n&quot;).unwrap(), DNANucleotides {A: 0, C: 0, G: 0, T: 0});</span>
 <span class='doccomment'>/// assert_eq!(count_dna_nucleotides(&quot;Z&quot;).unwrap_err(), UnknownNucleotide(&#39;Z&#39;));</span>
 <span class='doccomment'>/// ```</span>
-<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_dna_nucleotides</span>(<span class='ident'>dna</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>DNANucleotides</span><span class='op'>&gt;</span> {
+<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_dna_nucleotides</span>(<span class='ident'>dna</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RosalindResult</span><span class='op'>&lt;</span><span class='ident'>DNANucleotides</span><span class='op'>&gt;</span> {
   <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dna_nucleotides</span> <span class='op'>=</span> <span class='ident'>DNANucleotides</span> {<span class='ident'>A</span>: <span class='number'>0</span>, <span class='ident'>C</span>: <span class='number'>0</span>, <span class='ident'>G</span>: <span class='number'>0</span>, <span class='ident'>T</span>: <span class='number'>0</span>};
   <span class='kw'>for</span> <span class='ident'>nucleotide</span> <span class='kw'>in</span> <span class='ident'>dna</span>.<span class='ident'>chars</span>() {
     <span class='kw'>match</span> <span class='ident'>nucleotide</span> {
