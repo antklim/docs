@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["reverse_complement_dna","This function returns a reverse complement of a DNA string"]]});

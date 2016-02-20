@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["translate_rna_into_protein","This function translates provided RNA string into protein string"]]});

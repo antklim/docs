@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["count_dna_nucleotides","This function calculates dna nucleotides"]],"struct":[["DNANucleotides","This structure contains amount of each nucleotide in DNA"]]});
