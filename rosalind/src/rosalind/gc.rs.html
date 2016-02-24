@@ -166,6 +166,12 @@
 <span id="123">123</span>
 <span id="124">124</span>
 <span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Module for `Computing GC Content`</span>
 
@@ -290,6 +296,12 @@
 
     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>best_gc_content_in_dataset</span>(<span class='ident'>dataset</span>).<span class='ident'>unwrap</span>(),
       <span class='ident'>GCcontent</span> {<span class='ident'>string_id</span>: <span class='string'>&quot;Rosalind_0808&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>gc_content</span>: <span class='number'>60.919540f32</span>});
+  }
+
+  <span class='attribute'>#[<span class='ident'>test</span>]</span>
+  <span class='kw'>fn</span> <span class='ident'>it_should_format_gc_content</span>() {
+    <span class='kw'>let</span> <span class='ident'>gc_content</span> <span class='op'>=</span> <span class='ident'>GCcontent</span> {<span class='ident'>string_id</span>: <span class='string'>&quot;Rosalind_0808&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>gc_content</span>: <span class='number'>123.45f32</span>};
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>.<span class='ident'>to_string</span>(), <span class='string'>&quot;Rosalind_0808\n123.45&quot;</span>);
   }
 }
 </pre>

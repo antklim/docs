@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/rosalind/lib.rs.html#1-154' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-0' class='srclink' href='../src/rosalind/lib.rs.html#1-185' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>The <code>rosalind</code> crate provides fuctions to solve probles from <a href="http://rosalind.info/">Rosalind</a> site.</p>
 
 <h1 id='counting-dna-nucleotides' class='section-header'><a href='#counting-dna-nucleotides'>Counting DNA Nucleotides</a></h1>
@@ -96,7 +96,7 @@
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='ident'>rna</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;MAMAPRTEINSTRING&quot;</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;AUGUGA\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;M&quot;</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;Z&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>CodonParseError</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;ZZZ&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownCodon</span>(<span class='string'>&quot;ZZZ&quot;</span>));</pre>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;ZZZ&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownCodon</span>(<span class='string'>&quot;ZZZ&quot;</span>.<span class='ident'>to_string</span>()));</pre>
 
 <h1 id='counting-point-mutations' class='section-header'><a href='#counting-point-mutations'>Counting Point Mutations</a></h1>
 <h2 id='examples-5' class='section-header'><a href='#examples-5'>Examples</a></h2><pre class='rust rust-example-rendered'>
@@ -225,7 +225,8 @@
                         <td><a class='type' href='type.RosalindResult.html'
                                title='rosalind::RosalindResult'>RosalindResult</a></td>
                         <td class='docblock short'>
-                             
+                             <p>Unified return type for all modules and methods of <code>rosalind</code> library</p>
+
                         </td>
                     </tr>
                 </table></section>
