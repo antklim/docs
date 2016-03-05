@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["dominant_allele_probability","This function returns the probability that two randomly selected mating organisms will produce an individual possessing a dominant allele."]]});

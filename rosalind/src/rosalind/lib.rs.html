@@ -226,6 +226,23 @@
 <span id="183">183</span>
 <span id="184">184</span>
 <span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The `rosalind` crate provides fuctions to solve probles from [Rosalind](http://rosalind.info/) site.</span>
 <span class='doccomment'>//!</span>
@@ -333,6 +350,20 @@
 <span class='doccomment'>//! assert_eq!(best_gc_content_in_dataset(dataset).unwrap(),</span>
 <span class='doccomment'>//!   GCcontent {string_id: &quot;Rosalind_0808&quot;.to_string(), gc_content: 60.919540f32});</span>
 <span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # Mendel&#39;s First Law</span>
+<span class='doccomment'>//! ## Examples</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! use rosalind::RosalindError::InvalidInputParameters;</span>
+<span class='doccomment'>//! use rosalind::iprb::*;</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! assert_eq!(dominant_allele_probability(0, 1, 1).unwrap_err(), InvalidInputParameters);</span>
+<span class='doccomment'>//! assert_eq!(dominant_allele_probability(1, 0, 1).unwrap_err(), InvalidInputParameters);</span>
+<span class='doccomment'>//! assert_eq!(dominant_allele_probability(1, 1, 0).unwrap_err(), InvalidInputParameters);</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! assert_eq!(dominant_allele_probability(2, 2, 2).unwrap(), 0.7833333);</span>
+<span class='doccomment'>//! ```</span>
+
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>error</span>::<span class='ident'>Error</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
@@ -347,6 +378,7 @@
   <span class='ident'>CodonParseError</span>,
   <span class='ident'>HammingStringsLengthError</span>,
   <span class='ident'>MotifStringsLengthError</span>,
+  <span class='ident'>InvalidInputParameters</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>fmt</span>::<span class='ident'>Display</span> <span class='kw'>for</span> <span class='ident'>RosalindError</span> {
@@ -366,7 +398,8 @@
       <span class='ident'>UnknownCodon</span>(..) <span class='op'>=&gt;</span> <span class='string'>&quot;Unknown codon&quot;</span>,
       <span class='ident'>CodonParseError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Could not parse RNA string and group codons&quot;</span>,
       <span class='ident'>HammingStringsLengthError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Strings must have equal length&quot;</span>,
-      <span class='ident'>MotifStringsLengthError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Substrig `t` must be no longer than `s`&quot;</span>
+      <span class='ident'>MotifStringsLengthError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Substrig `t` must be no longer than `s`&quot;</span>,
+      <span class='ident'>InvalidInputParameters</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Invalid input parameters have been passed to the function&quot;</span>
     }
   }
 }
@@ -400,6 +433,7 @@
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>hamm</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>subs</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>gc</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>iprb</span>;
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {

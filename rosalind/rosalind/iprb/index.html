@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `gc_content` fn in crate `rosalind`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, gc_content">
+    <meta name="description" content="API documentation for the Rust `iprb` mod in crate `rosalind`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, iprb">
 
-    <title>rosalind::gc::gc_content - Rust</title>
+    <title>rosalind::iprb - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
@@ -27,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>rosalind</a>::<wbr><a href='index.html'>gc</a></p><script>window.sidebarCurrent = {name: 'gc_content', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>rosalind</a></p><script>window.sidebarCurrent = {name: 'iprb', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -41,20 +41,25 @@
         </form>
     </nav>
 
-    <section id='main' class="content fn">
-<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>rosalind</a>::<wbr><a href='index.html'>gc</a>::<wbr><a class='fn' href=''>gc_content</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>rosalind</a>::<wbr><a class='mod' href=''>iprb</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-241' class='srclink' href='../../src/rosalind/gc.rs.html#31-45' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn gc_content(dna: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../../rosalind/type.RosalindResult.html' title='rosalind::RosalindResult'>RosalindResult</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>&gt;</pre><div class='docblock'><p>This function calculates gc content of given DNA string</p>
+        </span><a id='src-259' class='srclink' href='../../src/rosalind/iprb.rs.html#1-57' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Module for <code>Mendel&#39;s First Law</code></p>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.dominant_allele_probability.html'
+                               title='rosalind::iprb::dominant_allele_probability'>dominant_allele_probability</a></td>
+                        <td class='docblock short'>
+                             <p>This function returns the probability that two randomly selected mating
+organisms will produce an individual possessing a dominant allele.</p>
 
-<h2 id='examples' class='section-header'><a href='#examples'>Examples</a></h2><pre class='rust rust-example-rendered'>
-<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>gc</span>::<span class='op'>*</span>;
-
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0f32</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>(<span class='string'>&quot;AGCTATAG&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>37.5f32</span>);</pre>
-</div></section>
+                        </td>
+                    </tr>
+                </table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
