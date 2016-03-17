@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `recurrence_relation_with_stop` fn in crate `rosalind`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, recurrence_relation_with_stop">
+
+    <title>rosalind::fib::recurrence_relation_with_stop - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>rosalind</a>::<wbr><a href='index.html'>fib</a></p><script>window.sidebarCurrent = {name: 'recurrence_relation_with_stop', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>rosalind</a>::<wbr><a href='index.html'>fib</a>::<wbr><a class='fn' href=''>recurrence_relation_with_stop</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-164' class='srclink' href='../../src/rosalind/fib.rs.html#58-86' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn recurrence_relation_with_stop(n: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, m: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='type' href='../../rosalind/type.RosalindResult.html' title='rosalind::RosalindResult'>RosalindResult</a>&lt;<a class='struct' href='../../num/bigint/struct.BigUint.html' title='num::bigint::BigUint'>BigUint</a>&gt;</pre><div class='docblock'><p>This function calculates recurrence relation, or value of element at <code>n</code> position
+in Fibonaccie&#39;s sequence with stop value which is lifetime of each pair</p>
+
+<ul>
+<li><em>n</em> months amount to calculate population</li>
+<li><em>m</em> lifetime in months</li>
+</ul>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id='macro_use-extern-crate-num' class='section-header'><a href='#macro_use-extern-crate-num'>#[macro_use] extern crate num;</a></h1>
+<h1 id='macro_use-extern-crate-rosalind' class='section-header'><a href='#macro_use-extern-crate-rosalind'>#[macro_use] extern crate rosalind;</a></h1>
+<h1 id='fn-main-' class='section-header'><a href='#fn-main-'>fn main() {</a></h1>
+<p>use rosalind::fib::*;
+use num::{BigUint};
+use num::bigint::{ToBigUint};</p>
+
+<p>let expected_relation: BigUint = 4.to_biguint().unwrap();
+assert_eq!(recurrence_relation_with_stop(6, 3).unwrap(), expected_relation);</p>
+
+<h1 id='' class='section-header'><a href='#'>}</a></h1></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "rosalind";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

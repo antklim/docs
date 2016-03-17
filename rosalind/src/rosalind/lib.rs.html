@@ -243,6 +243,15 @@
 <span id="200">200</span>
 <span id="201">201</span>
 <span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The `rosalind` crate provides fuctions to solve probles from [Rosalind](http://rosalind.info/) site.</span>
 <span class='doccomment'>//!</span>
@@ -287,9 +296,18 @@
 <span class='doccomment'>//! # Rabbits and Recurrence Relations</span>
 <span class='doccomment'>//! ## Examples</span>
 <span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! # #[macro_use] extern crate num;</span>
+<span class='doccomment'>//! # #[macro_use] extern crate rosalind;</span>
+<span class='doccomment'>//! # fn main() {</span>
 <span class='doccomment'>//! use rosalind::fib::*;</span>
+<span class='doccomment'>//! use num::{BigUint};</span>
+<span class='doccomment'>//! use num::bigint::{ToBigUint};</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! assert_eq!(recurrence_relation(5, 3).unwrap(), 19);</span>
+<span class='doccomment'>//! let mut expected_relation: BigUint = 19.to_biguint().unwrap();</span>
+<span class='doccomment'>//! assert_eq!(recurrence_relation(5, 3).unwrap(), expected_relation);</span>
+<span class='doccomment'>//! expected_relation = 4.to_biguint().unwrap();</span>
+<span class='doccomment'>//! assert_eq!(recurrence_relation_with_stop(6, 3).unwrap(), expected_relation);</span>
+<span class='doccomment'>//! # }</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! # Translating RNA into Protein</span>
@@ -363,7 +381,7 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! assert_eq!(dominant_allele_probability(2, 2, 2).unwrap(), 0.7833333);</span>
 <span class='doccomment'>//! ```</span>
-
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>num</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>error</span>::<span class='ident'>Error</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;

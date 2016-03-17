@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["recurrence_relation","This function calculates recurrence relation, or value of element at `n` position in Fibonaccie's sequence"]]});
+initSidebarItems({"fn":[["recurrence_relation","This function calculates recurrence relation, or value of element at `n` position in Fibonaccie's sequence"],["recurrence_relation_with_stop","This function calculates recurrence relation, or value of element at `n` position in Fibonaccie's sequence with stop value which is lifetime of each pair"]]});
