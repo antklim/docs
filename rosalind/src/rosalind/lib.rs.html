@@ -252,6 +252,14 @@
 <span id="209">209</span>
 <span id="210">210</span>
 <span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The `rosalind` crate provides fuctions to solve probles from [Rosalind](http://rosalind.info/) site.</span>
 <span class='doccomment'>//!</span>
@@ -310,10 +318,10 @@
 <span class='doccomment'>//! # }</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! # Translating RNA into Protein</span>
+<span class='doccomment'>//! # Translating RNA into Protein, Inferring mRNA from Protein</span>
 <span class='doccomment'>//! ## Examples</span>
 <span class='doccomment'>//! ```</span>
-<span class='doccomment'>//! use rosalind::RosalindError::{CodonParseError, UnknownCodon};</span>
+<span class='doccomment'>//! use rosalind::RosalindError::{CodonParseError, UnknownCodon, UnknownAminoAcid};</span>
 <span class='doccomment'>//! use rosalind::prot::*;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! let rna = &quot;AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA&quot;;</span>
@@ -321,6 +329,11 @@
 <span class='doccomment'>//! assert_eq!(translate_rna_into_protein(&quot;AUGUGA\n&quot;).unwrap(), &quot;M&quot;);</span>
 <span class='doccomment'>//! assert_eq!(translate_rna_into_protein(&quot;Z&quot;).unwrap_err(), CodonParseError);</span>
 <span class='doccomment'>//! assert_eq!(translate_rna_into_protein(&quot;ZZZ&quot;).unwrap_err(), UnknownCodon(&quot;ZZZ&quot;.to_string()));</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;MA&quot;).unwrap(), 12);</span>
+<span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;&quot;).unwrap(), 0);</span>
+<span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;\n&quot;).unwrap(), 0);</span>
+<span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;B&quot;).unwrap_err(), UnknownAminoAcid(&#39;B&#39;));</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! # Counting Point Mutations</span>
@@ -393,6 +406,7 @@
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>RosalindError</span> {
   <span class='ident'>UnknownNucleotide</span>(<span class='ident'>char</span>),
   <span class='ident'>UnknownCodon</span>(<span class='ident'>String</span>),
+  <span class='ident'>UnknownAminoAcid</span>(<span class='ident'>char</span>),
   <span class='ident'>CodonParseError</span>,
   <span class='ident'>HammingStringsLengthError</span>,
   <span class='ident'>MotifStringsLengthError</span>,
@@ -404,6 +418,7 @@
     <span class='kw'>match</span> <span class='op'>*</span><span class='self'>self</span> {
       <span class='ident'>UnknownNucleotide</span>(<span class='kw-2'>ref</span> <span class='ident'>nucleotide</span>) <span class='op'>=&gt;</span> <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}: &#39;{}&#39;&quot;</span>, <span class='self'>self</span>.<span class='ident'>description</span>(), <span class='ident'>nucleotide</span>),
       <span class='ident'>UnknownCodon</span>(<span class='kw-2'>ref</span> <span class='ident'>codon</span>) <span class='op'>=&gt;</span> <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}: &#39;{}&#39;&quot;</span>, <span class='self'>self</span>.<span class='ident'>description</span>(), <span class='ident'>codon</span>),
+      <span class='ident'>UnknownAminoAcid</span>(<span class='kw-2'>ref</span> <span class='ident'>amino_acid</span>) <span class='op'>=&gt;</span> <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}: &#39;{}&#39;&quot;</span>, <span class='self'>self</span>.<span class='ident'>description</span>(), <span class='ident'>amino_acid</span>),
       _ <span class='op'>=&gt;</span> <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}&quot;</span>, <span class='self'>self</span>.<span class='ident'>description</span>()),
     }
   }
@@ -414,6 +429,7 @@
     <span class='kw'>match</span> <span class='op'>*</span><span class='self'>self</span> {
       <span class='ident'>UnknownNucleotide</span>(..) <span class='op'>=&gt;</span> <span class='string'>&quot;Unknown nucleotide&quot;</span>,
       <span class='ident'>UnknownCodon</span>(..) <span class='op'>=&gt;</span> <span class='string'>&quot;Unknown codon&quot;</span>,
+      <span class='ident'>UnknownAminoAcid</span>(..) <span class='op'>=&gt;</span> <span class='string'>&quot;Unknown amino acid&quot;</span>,
       <span class='ident'>CodonParseError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Could not parse RNA string and group codons&quot;</span>,
       <span class='ident'>HammingStringsLengthError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Strings must have equal length&quot;</span>,
       <span class='ident'>MotifStringsLengthError</span> <span class='op'>=&gt;</span> <span class='string'>&quot;Substrig `t` must be no longer than `s`&quot;</span>,
