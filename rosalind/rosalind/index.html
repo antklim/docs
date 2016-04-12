@@ -105,7 +105,7 @@
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;MA&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>12</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>3</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;B&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownAminoAcid</span>(<span class='string'>&#39;B&#39;</span>));</pre>
 
 <h1 id='counting-point-mutations' class='section-header'><a href='#counting-point-mutations'>Counting Point Mutations</a></h1>
@@ -209,7 +209,7 @@
                         <td><a class='mod' href='prot/index.html'
                                title='rosalind::prot'>prot</a></td>
                         <td class='docblock short'>
-                             <p>Module for <code>Translating RNA into Protein</code></p>
+                             <p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein</code></p>
 
                         </td>
                     </tr>

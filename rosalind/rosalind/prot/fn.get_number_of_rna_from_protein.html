@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-208' class='srclink' href='../../src/rosalind/prot.rs.html#105-122' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-208' class='srclink' href='../../src/rosalind/prot.rs.html#104-122' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn get_number_of_rna_from_protein(protein: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../../rosalind/type.RosalindResult.html' title='rosalind::RosalindResult'>RosalindResult</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</pre><div class='docblock'><p>This function returns the number of different mRNA strings from which protein
 could have been translated</p>
 
@@ -56,7 +56,7 @@ could have been translated</p>
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;MA&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>12</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>3</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;B&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownAminoAcid</span>(<span class='string'>&#39;B&#39;</span>));</pre>
 </div></section>
     <section id='search' class="content hidden"></section>
