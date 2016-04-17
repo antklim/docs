@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["motif_lookup","This function finds locations of substring `t` in string `s` (finds a motif in DNA)"]]});

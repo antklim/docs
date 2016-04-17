@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["transcribe_dna_into_rna","This function transcribes DNA into RNA via replacung T nucleotide in DNA into U nucleotide in RNA"]]});

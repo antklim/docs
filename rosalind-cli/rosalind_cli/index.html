@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `rosalind_cli` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, rosalind_cli">
+
+    <title>rosalind_cli - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'rosalind_cli', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rosalind_cli</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/rosalind_cli/src/main.rs.html#1-335' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p><code>rosalind-cli</code> is the command line interaface for <a href="https://github.com/antklim/rosalind">rosalind</a> crate
+which contains solutions of problems from <a href="http://rosalind.info/">Rosalind</a> site.</p>
+
+<h1 id='command-structure' class='section-header'><a href='#command-structure'>Command structure</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> [<span class='ident'>options</span>]</pre>
+
+<h1 id='options-supported-by-rosalind-cli' class='section-header'><a href='#options-supported-by-rosalind-cli'>Options supported by <code>rosalind-cli</code></a></h1>
+<h2 id='general-options' class='section-header'><a href='#general-options'>General options</a></h2>
+<ul>
+<li><code>-h</code>, <code>--help</code> prints help menu</li>
+<li><code>-t</code>, <code>--task</code> sets task name related to a particular problem</li>
+</ul>
+
+<h2 id='task-specific-options' class='section-header'><a href='#task-specific-options'>Task specific options</a></h2>
+<ul>
+<li><code>-d</code>, <code>--data</code> sets path to data file</li>
+<li><code>-k</code> offspring amount from each pair (used only in Fibonacci tasks)</li>
+<li><code>-m</code> species lifetime in months (used only in Fibonacci tasks)</li>
+<li><code>-n</code> month amount to calculate population size (used only in Fibonacci tasks)</li>
+</ul>
+
+<h1 id='problem-solutions-provided-by-rosalind-cli' class='section-header'><a href='#problem-solutions-provided-by-rosalind-cli'>Problem solutions provided by <code>rosalind-cli</code></a></h1>
+<h3 id='counting-dna-nucleotides-task-name-dna' class='section-header'><a href='#counting-dna-nucleotides-task-name-dna'>Counting DNA Nucleotides, task name <code>dna</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>dna</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_dna</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='transcribing-dna-into-rna-task-name-rna' class='section-header'><a href='#transcribing-dna-into-rna-task-name-rna'>Transcribing DNA into RNA, task name <code>rna</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>rna</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_rna</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='complementing-a-strand-of-dna-task-name-revc' class='section-header'><a href='#complementing-a-strand-of-dna-task-name-revc'>Complementing a Strand of DNA, task name <code>revc</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>revc</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_revc</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='rabbits-and-recurrence-relations-task-name-fib' class='section-header'><a href='#rabbits-and-recurrence-relations-task-name-fib'>Rabbits and Recurrence Relations, task name <code>fib</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>fib</span> <span class='op'>-</span><span class='ident'>n</span> <span class='number'>5</span> <span class='op'>-</span><span class='ident'>k</span> <span class='number'>3</span></pre>
+
+<h3 id='computing-gc-content-task-name-gc' class='section-header'><a href='#computing-gc-content-task-name-gc'>Computing GC Content, task name <code>gc</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>gc</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_gc</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='counting-point-mutations-task-name-hamm' class='section-header'><a href='#counting-point-mutations-task-name-hamm'>Counting Point Mutations, task name <code>hamm</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>hamm</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_hamm</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='mendels-first-law-task-name-iprb' class='section-header'><a href='#mendels-first-law-task-name-iprb'>Mendel&#39;s First Law, task name <code>iprb</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>iprb</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_iprb</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='translating-rna-into-protein-task-name-prot' class='section-header'><a href='#translating-rna-into-protein-task-name-prot'>Translating RNA into Protein, task name <code>prot</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>prot</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_prot</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='finding-a-motif-in-dna-task-name-subs' class='section-header'><a href='#finding-a-motif-in-dna-task-name-subs'>Finding a Motif in DNA, task name <code>subs</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>subs</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_subs</span>.<span class='ident'>txt</span></pre>
+
+<h3 id='mortal-fibonacci-rabbits-task-name-fibd' class='section-header'><a href='#mortal-fibonacci-rabbits-task-name-fibd'>Mortal Fibonacci Rabbits, task name <code>fibd</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>fibd</span> <span class='op'>-</span><span class='ident'>n</span> <span class='number'>6</span> <span class='op'>-</span><span class='ident'>m</span> <span class='number'>3</span></pre>
+
+<h3 id='inferring-mrna-from-protein-task-name-mrna' class='section-header'><a href='#inferring-mrna-from-protein-task-name-mrna'>Inferring mRNA from Protein, task name <code>mrna</code></a></h3>
+<pre class='rust rust-example-rendered'>
+<span class='ident'>rosalind</span><span class='op'>-</span><span class='ident'>cli</span> <span class='op'>-</span><span class='ident'>t</span> <span class='ident'>mrna</span> <span class='op'>-</span><span class='ident'>d</span> <span class='ident'>rosalind_mrna</span>.<span class='ident'>txt</span></pre>
+</div></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rosalind_cli";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["best_gc_content_in_dataset","This function calculates best gc content in the given dataset and returns ID of the string with the highest GC content and GC content"],["gc_content","This function calculates gc content of given DNA string"]],"struct":[["GCcontent","This structure contains info about the string with the highest GC content"]]});

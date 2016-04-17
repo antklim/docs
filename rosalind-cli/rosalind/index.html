@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `rosalind` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, rosalind">
+
+    <title>rosalind - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'rosalind', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rosalind</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/rosalind/lib.rs.html#1-219' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>The <code>rosalind</code> crate provides fuctions to solve probles from <a href="http://rosalind.info/">Rosalind</a> site.</p>
+
+<h1 id='counting-dna-nucleotides' class='section-header'><a href='#counting-dna-nucleotides'>Counting DNA Nucleotides</a></h1>
+<h2 id='examples' class='section-header'><a href='#examples'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>UnknownNucleotide</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>dna</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>dna</span> <span class='op'>=</span> <span class='string'>&quot;AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC&quot;</span>;
+<span class='kw'>let</span> <span class='ident'>dna_nucleotides</span> <span class='op'>=</span> <span class='ident'>DNANucleotides</span> {<span class='ident'>A</span>: <span class='number'>20</span>, <span class='ident'>C</span>: <span class='number'>12</span>, <span class='ident'>G</span>: <span class='number'>17</span>, <span class='ident'>T</span>: <span class='number'>21</span>};
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>count_dna_nucleotides</span>(<span class='ident'>dna</span>).<span class='ident'>unwrap</span>(), <span class='ident'>dna_nucleotides</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dna_nucleotides</span>.<span class='ident'>to_string</span>(), <span class='string'>&quot;20 12 17 21&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>count_dna_nucleotides</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='ident'>DNANucleotides</span> {<span class='ident'>A</span>: <span class='number'>0</span>, <span class='ident'>C</span>: <span class='number'>0</span>, <span class='ident'>G</span>: <span class='number'>0</span>, <span class='ident'>T</span>: <span class='number'>0</span>});
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>count_dna_nucleotides</span>(<span class='string'>&quot;Z&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownNucleotide</span>(<span class='string'>&#39;Z&#39;</span>));</pre>
+
+<h1 id='transcribing-dna-into-rna' class='section-header'><a href='#transcribing-dna-into-rna'>Transcribing DNA into RNA</a></h1>
+<h2 id='examples-1' class='section-header'><a href='#examples-1'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>UnknownNucleotide</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>rna</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>dna</span> <span class='op'>=</span> <span class='string'>&quot;GATGGAACTTGACTACGTAAATT&quot;</span>;
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>transcribe_dna_into_rna</span>(<span class='ident'>dna</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;GAUGGAACUUGACUACGUAAAUU&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>transcribe_dna_into_rna</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>transcribe_dna_into_rna</span>(<span class='string'>&quot;Z&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownNucleotide</span>(<span class='string'>&#39;Z&#39;</span>));</pre>
+
+<h1 id='complementing-a-strand-of-dna' class='section-header'><a href='#complementing-a-strand-of-dna'>Complementing a Strand of DNA</a></h1>
+<h2 id='examples-2' class='section-header'><a href='#examples-2'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>UnknownNucleotide</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>revc</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>dna</span> <span class='op'>=</span> <span class='string'>&quot;AAAACCCGGT&quot;</span>;
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reverse_complement_dna</span>(<span class='ident'>dna</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;ACCGGGTTTT&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reverse_complement_dna</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reverse_complement_dna</span>(<span class='string'>&quot;Z&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownNucleotide</span>(<span class='string'>&#39;Z&#39;</span>));</pre>
+
+<h1 id='rabbits-and-recurrence-relations' class='section-header'><a href='#rabbits-and-recurrence-relations'>Rabbits and Recurrence Relations</a></h1>
+<h2 id='examples-3' class='section-header'><a href='#examples-3'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>fib</span>::<span class='op'>*</span>;
+<span class='kw'>use</span> <span class='ident'>num</span>::{<span class='ident'>BigUint</span>};
+<span class='kw'>use</span> <span class='ident'>num</span>::<span class='ident'>bigint</span>::{<span class='ident'>ToBigUint</span>};
+
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>expected_relation</span>: <span class='ident'>BigUint</span> <span class='op'>=</span> <span class='number'>19</span>.<span class='ident'>to_biguint</span>().<span class='ident'>unwrap</span>();
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>recurrence_relation</span>(<span class='number'>5</span>, <span class='number'>3</span>).<span class='ident'>unwrap</span>(), <span class='ident'>expected_relation</span>);
+<span class='ident'>expected_relation</span> <span class='op'>=</span> <span class='number'>4</span>.<span class='ident'>to_biguint</span>().<span class='ident'>unwrap</span>();
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>recurrence_relation_with_stop</span>(<span class='number'>6</span>, <span class='number'>3</span>).<span class='ident'>unwrap</span>(), <span class='ident'>expected_relation</span>);</pre>
+
+<h1 id='translating-rna-into-protein-inferring-mrna-from-protein' class='section-header'><a href='#translating-rna-into-protein-inferring-mrna-from-protein'>Translating RNA into Protein, Inferring mRNA from Protein</a></h1>
+<h2 id='examples-4' class='section-header'><a href='#examples-4'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::{<span class='ident'>CodonParseError</span>, <span class='ident'>UnknownCodon</span>, <span class='ident'>UnknownAminoAcid</span>};
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>prot</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>rna</span> <span class='op'>=</span> <span class='string'>&quot;AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA&quot;</span>;
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='ident'>rna</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;MAMAPRTEINSTRING&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;AUGUGA\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;M&quot;</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;Z&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>CodonParseError</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>translate_rna_into_protein</span>(<span class='string'>&quot;ZZZ&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownCodon</span>(<span class='string'>&quot;ZZZ&quot;</span>.<span class='ident'>to_string</span>()));
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;MA&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>12</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;\n&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>get_number_of_rna_from_protein</span>(<span class='string'>&quot;B&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownAminoAcid</span>(<span class='string'>&#39;B&#39;</span>));</pre>
+
+<h1 id='counting-point-mutations' class='section-header'><a href='#counting-point-mutations'>Counting Point Mutations</a></h1>
+<h2 id='examples-5' class='section-header'><a href='#examples-5'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>HammingStringsLengthError</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>hamm</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='string'>&quot;GAGCCTACTAACGGGAT&quot;</span>;
+<span class='kw'>let</span> <span class='ident'>t</span> <span class='op'>=</span> <span class='string'>&quot;CATCGTAATGACGGCCT&quot;</span>;
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>hamming_distance</span>(<span class='ident'>s</span>, <span class='ident'>t</span>).<span class='ident'>unwrap</span>(), <span class='number'>7</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>hamming_distance</span>(<span class='string'>&quot;G&quot;</span>, <span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>HammingStringsLengthError</span>);</pre>
+
+<h1 id='finding-a-motif-in-dna' class='section-header'><a href='#finding-a-motif-in-dna'>Finding a Motif in DNA</a></h1>
+<h2 id='examples-6' class='section-header'><a href='#examples-6'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>MotifStringsLengthError</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>subs</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='string'>&quot;GATATATGCATATACTT&quot;</span>;
+<span class='kw'>let</span> <span class='ident'>t</span> <span class='op'>=</span> <span class='string'>&quot;ATAT&quot;</span>;
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>motif_lookup</span>(<span class='ident'>s</span>, <span class='ident'>t</span>).<span class='ident'>unwrap</span>(), <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>2</span>, <span class='number'>4</span>, <span class='number'>10</span>]);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>motif_lookup</span>(<span class='ident'>t</span>, <span class='ident'>s</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>MotifStringsLengthError</span>);</pre>
+
+<h1 id='computing-gc-content' class='section-header'><a href='#computing-gc-content'>Computing GC Content</a></h1>
+<h2 id='examples-7' class='section-header'><a href='#examples-7'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>gc</span>::<span class='op'>*</span>;
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0f32</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>(<span class='string'>&quot;AGCTATAG&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>37.5f32</span>);
+
+<span class='kw'>let</span> <span class='ident'>dataset</span> <span class='op'>=</span> <span class='string'>&quot;&gt;Rosalind_6404
+  CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
+  TCCCACTAATAATTCTGAGG
+  &gt;Rosalind_5959
+  CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
+  ATATCCATTTGTCAGCAGACACGC
+  &gt;Rosalind_0808
+  CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
+  TGGGAACCTGCGGGCAGTAGGTGGAAT&quot;</span>;
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>best_gc_content_in_dataset</span>(<span class='ident'>dataset</span>).<span class='ident'>unwrap</span>(),
+  <span class='ident'>GCcontent</span> {<span class='ident'>string_id</span>: <span class='string'>&quot;Rosalind_0808&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>gc_content</span>: <span class='number'>60.919540f32</span>});</pre>
+
+<h1 id='mendels-first-law' class='section-header'><a href='#mendels-first-law'>Mendel&#39;s First Law</a></h1>
+<h2 id='examples-8' class='section-header'><a href='#examples-8'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>RosalindError</span>::<span class='ident'>InvalidInputParameters</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>iprb</span>::<span class='op'>*</span>;
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>0</span>, <span class='number'>1</span>, <span class='number'>1</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>InvalidInputParameters</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>1</span>, <span class='number'>0</span>, <span class='number'>1</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>InvalidInputParameters</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>1</span>, <span class='number'>1</span>, <span class='number'>0</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>InvalidInputParameters</span>);
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>2</span>, <span class='number'>2</span>, <span class='number'>2</span>).<span class='ident'>unwrap</span>(), <span class='number'>0.7833333</span>);</pre>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='dna/index.html'
+                               title='rosalind::dna'>dna</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Counting DNA Nucleotides</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='fib/index.html'
+                               title='rosalind::fib'>fib</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Rabbits and Recurrence Relations</code>, <code>Mortal Fibonacci Rabbits</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='gc/index.html'
+                               title='rosalind::gc'>gc</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Computing GC Content</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='hamm/index.html'
+                               title='rosalind::hamm'>hamm</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Counting Point Mutations</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='iprb/index.html'
+                               title='rosalind::iprb'>iprb</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Mendel&#39;s First Law</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='prot/index.html'
+                               title='rosalind::prot'>prot</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='revc/index.html'
+                               title='rosalind::revc'>revc</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Complementing a Strand of DNA</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='rna/index.html'
+                               title='rosalind::rna'>rna</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Transcribing DNA into RNA</code></p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='mod' href='subs/index.html'
+                               title='rosalind::subs'>subs</a></td>
+                        <td class='docblock short'>
+                             <p>Module for <code>Finding a Motif in DNA</code></p>
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.RosalindError.html'
+                               title='rosalind::RosalindError'>RosalindError</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.RosalindResult.html'
+                               title='rosalind::RosalindResult'>RosalindResult</a></td>
+                        <td class='docblock short'>
+                             <p>Unified return type for all modules and methods of <code>rosalind</code> library</p>
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rosalind";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
