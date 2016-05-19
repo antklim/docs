@@ -46,8 +46,8 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-185' class='srclink' href='../../src/rosalind/prot.rs.html#1-170' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein</code></p>
+        </span><a id='src-185' class='srclink' href='../../src/rosalind/src/prot.rs.html#1-228' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein, Calculating Protein Mass</code></p>
 </div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                     <tr class=' module-item'>
@@ -56,7 +56,14 @@
                         <td class='docblock short'>
                              <p>This function returns the number of different mRNA strings from which protein
 could have been translated</p>
-
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.get_protein_mass.html'
+                               title='rosalind::prot::get_protein_mass'>get_protein_mass</a></td>
+                        <td class='docblock short'>
+                             <p>This function calculates protein mass</p>
                         </td>
                     </tr>
                 
@@ -65,7 +72,6 @@ could have been translated</p>
                                title='rosalind::prot::translate_rna_into_protein'>translate_rna_into_protein</a></td>
                         <td class='docblock short'>
                              <p>This function translates provided RNA string into protein string</p>
-
                         </td>
                     </tr>
                 </table></section>
@@ -111,7 +117,7 @@ could have been translated</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>

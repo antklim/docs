@@ -46,10 +46,11 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-285' class='srclink' href='../../src/rosalind/gc.rs.html#31-45' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-296' class='srclink' href='../../src/rosalind/src/gc.rs.html#31-45' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn gc_content(dna: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../../rosalind/type.RosalindResult.html' title='rosalind::RosalindResult'>RosalindResult</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>&gt;</pre><div class='docblock'><p>This function calculates gc content of given DNA string</p>
 
-<h2 id='examples' class='section-header'><a href='#examples'>Examples</a></h2><pre class='rust rust-example-rendered'>
+<h2 id='examples' class='section-header'><a href='#examples'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>gc</span>::<span class='op'>*</span>;
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>gc_content</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>0f32</span>);
@@ -97,7 +98,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
