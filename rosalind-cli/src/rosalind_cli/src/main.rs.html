@@ -376,6 +376,21 @@
 <span id="333">333</span>
 <span id="334">334</span>
 <span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! `rosalind-cli` is the command line interaface for [rosalind](https://github.com/antklim/rosalind) crate</span>
 <span class='doccomment'>//! which contains solutions of problems from [Rosalind](http://rosalind.info/) site.</span>
@@ -452,6 +467,11 @@
 <span class='doccomment'>//! rosalind-cli -t mrna -d rosalind_mrna.txt</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
+<span class='doccomment'>//! ### Calculating Protein Mass, task name `prtm`</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! rosalind-cli -t prtm -d rosalind_prtm.txt</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>getopts</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rosalind</span>;
@@ -464,8 +484,8 @@
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>dna</span>::<span class='ident'>count_dna_nucleotides</span>;
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>rna</span>::<span class='ident'>transcribe_dna_into_rna</span>;
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>revc</span>::<span class='ident'>reverse_complement_dna</span>;
-<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>fib</span>::{<span class='ident'>recurrence_relation</span>, <span class='ident'>recurrence_relation_with_stop</span>};
-<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>prot</span>::{<span class='ident'>translate_rna_into_protein</span>, <span class='ident'>get_number_of_rna_from_protein</span>};
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>fib</span>::<span class='op'>*</span>;
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>prot</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>hamm</span>::<span class='ident'>hamming_distance</span>;
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>subs</span>::<span class='ident'>motif_lookup</span>;
 <span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>gc</span>::<span class='ident'>best_gc_content_in_dataset</span>;
@@ -563,6 +583,12 @@
     },
     <span class='string'>&quot;mrna&quot;</span> <span class='op'>=&gt;</span> {
       <span class='kw'>match</span> <span class='ident'>get_number_of_rna_from_protein</span>(<span class='ident'>file_content</span>) {
+        <span class='prelude-val'>Ok</span>(<span class='ident'>result</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result: {}&quot;</span>, <span class='ident'>result</span>),
+        <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>err</span>),
+      }
+    },
+    <span class='string'>&quot;prtm&quot;</span> <span class='op'>=&gt;</span> {
+      <span class='kw'>match</span> <span class='ident'>get_protein_mass</span>(<span class='ident'>file_content</span>) {
         <span class='prelude-val'>Ok</span>(<span class='ident'>result</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result: {}&quot;</span>, <span class='ident'>result</span>),
         <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>err</span>),
       }
@@ -684,6 +710,10 @@
   <span class='comment'>// #[test]</span>
   <span class='comment'>// fn do_task_should_call_iprb() {</span>
   <span class='comment'>// }</span>
+
+  <span class='comment'>// #[test]</span>
+  <span class='comment'>// fn do_task_should_call_prtm() {</span>
+  <span class='comment'>// }</span>
 }
 
 <span class='kw'>fn</span> <span class='ident'>main</span>() {
@@ -691,7 +721,7 @@
   <span class='kw'>let</span> <span class='ident'>program</span> <span class='op'>=</span> <span class='ident'>args</span>[<span class='number'>0</span>].<span class='ident'>clone</span>();
 
   <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>opts</span> <span class='op'>=</span> <span class='ident'>Options</span>::<span class='ident'>new</span>();
-  <span class='kw'>let</span> <span class='ident'>supported_tasks</span> <span class='op'>=</span> <span class='string'>&quot;dna|rna|revc|fib|fibd|prot|hamm|subs|gc|mrna|iprb&quot;</span>;
+  <span class='kw'>let</span> <span class='ident'>supported_tasks</span> <span class='op'>=</span> <span class='string'>&quot;dna|rna|revc|fib|fibd|prot|hamm|subs|gc|mrna|iprb|prtm&quot;</span>;
 
   <span class='ident'>opts</span>.<span class='ident'>optopt</span>(<span class='string'>&quot;d&quot;</span>, <span class='string'>&quot;data&quot;</span>, <span class='string'>&quot;set data file name&quot;</span>, <span class='string'>&quot;NAME&quot;</span>);
   <span class='ident'>opts</span>.<span class='ident'>optflag</span>(<span class='string'>&quot;h&quot;</span>, <span class='string'>&quot;help&quot;</span>, <span class='string'>&quot;print this help menu&quot;</span>);

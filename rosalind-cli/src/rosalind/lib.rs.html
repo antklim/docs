@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-88ac128001ac3a9a/rosalind-0.8.1/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-88ac128001ac3a9a/rosalind-0.9.0/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -260,6 +260,9 @@
 <span id="217">217</span>
 <span id="218">218</span>
 <span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The `rosalind` crate provides fuctions to solve probles from [Rosalind](http://rosalind.info/) site.</span>
 <span class='doccomment'>//!</span>
@@ -318,7 +321,7 @@
 <span class='doccomment'>//! # }</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! # Translating RNA into Protein, Inferring mRNA from Protein</span>
+<span class='doccomment'>//! # Translating RNA into Protein, Inferring mRNA from Protein, Calculating Protein Mass</span>
 <span class='doccomment'>//! ## Examples</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//! use rosalind::RosalindError::{CodonParseError, UnknownCodon, UnknownAminoAcid};</span>
@@ -334,6 +337,9 @@
 <span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;&quot;).unwrap(), 0);</span>
 <span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;\n&quot;).unwrap(), 3);</span>
 <span class='doccomment'>//! assert_eq!(get_number_of_rna_from_protein(&quot;B&quot;).unwrap_err(), UnknownAminoAcid(&#39;B&#39;));</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! assert_eq!(get_protein_mass(&quot;SKADYEK\n&quot;).unwrap(), 821.392f64);</span>
+<span class='doccomment'>//! assert_eq!(get_protein_mass(&quot;AB&quot;).unwrap_err(), UnknownAminoAcid(&#39;B&#39;));</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! # Counting Point Mutations</span>
