@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["FIXChecksumValidatorError",""]],"fn":[["generate","This function generates checksum of FIX message"],["validate","This function validates FIX message checksum"]]});

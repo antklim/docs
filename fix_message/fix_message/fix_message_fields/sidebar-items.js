@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["BEGIN_STRING","`8 - BeginString`"],["BODY_LENGTH","`9 - BodyLength`"],["CHECK_SUM","`10 - CheckSum`"],["MSG_SEQ_NUM","`34 - MsgSeqNum`"],["MSG_TYPE","`35 - MsgType`"],["SENDER_COMP_ID","`49 - SenderCompID`"],["SENDING_TIME","`52 - SendingTime`"],["TARGET_COMP_ID","`56 - TargetCompID`"]]});

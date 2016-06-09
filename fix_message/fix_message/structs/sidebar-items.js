@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FIXMessage","This structure represents the whole FIX message"],["FIXMessageField","This structure represents field/value pair of FIX message"]]});
