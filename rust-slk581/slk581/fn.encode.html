@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `encode` fn in crate `slk581`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, encode">
+
+    <title>slk581::encode - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>slk581</a></p><script>window.sidebarCurrent = {name: 'encode', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='index.html'>slk581</a>::<wbr><a class='fn' href=''>encode</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-97' class='srclink' href='../src/slk581/src/lib.rs.html#218-235' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn encode&lt;'a&gt;(family_name: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, given_name: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, date_of_birth: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, sex: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,&nbsp;<a class='enum' href='../slk581/enum.SLK581Error.html' title='slk581::SLK581Error'>SLK581Error</a>&lt;'a&gt;&gt;</pre><div class='docblock'><p>This function encodes given family name, given name, date of birth and sex in <code>XXXZZDDMMYYYYN</code>
+sequence.</p>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<p>Returns <code>UnknownDateOfBirth</code> when date of birth not provided:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>encode</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>::<span class='ident'>UnknownDateOfBirth</span>;
+
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>encode</span>(<span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_err</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap_err</span>(), <span class='ident'>UnknownDateOfBirth</span>);</pre>
+
+<p>Returns <code>InvalidDateOfBirth</code> when date of birth provided in invalid format:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>encode</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>::<span class='ident'>InvalidDateOfBirth</span>;
+
+<span class='kw'>let</span> <span class='ident'>date_of_birth</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='string'>&quot;20001219&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>encode</span>(<span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>, <span class='ident'>date_of_birth</span>, <span class='prelude-val'>None</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_err</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap_err</span>(), <span class='ident'>InvalidDateOfBirth</span>);</pre>
+
+<p>Returns <code>UnsupportedSex</code> when unsupported sex value provided:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>encode</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>::<span class='ident'>UnsupportedSex</span>;
+
+<span class='kw'>let</span> <span class='ident'>date_of_birth</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='string'>&quot;2000-12-19&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>sex</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='string'>&quot;test&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>encode</span>(<span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>, <span class='ident'>date_of_birth</span>, <span class='ident'>sex</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_err</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap_err</span>(), <span class='ident'>UnsupportedSex</span>(<span class='string'>&quot;test&quot;</span>));</pre>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>encode</span>;
+<span class='kw'>use</span> <span class='ident'>slk581</span>::<span class='ident'>SLK581Error</span>;
+
+<span class='kw'>let</span> <span class='ident'>date_of_birth</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='string'>&quot;2000-12-19&quot;</span>);
+
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span>
+    <span class='ident'>encode</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;Doe&quot;</span>), <span class='prelude-val'>Some</span>(<span class='string'>&quot;John&quot;</span>), <span class='ident'>date_of_birth</span>, <span class='prelude-val'>Some</span>(<span class='string'>&quot;m&quot;</span>));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_ok</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap</span>(), <span class='string'>&quot;OE2OH191220001&quot;</span>);
+
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span>
+    <span class='ident'>encode</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;Smith&quot;</span>), <span class='prelude-val'>Some</span>(<span class='string'>&quot;Jane&quot;</span>), <span class='ident'>date_of_birth</span>, <span class='prelude-val'>Some</span>(<span class='string'>&quot;f&quot;</span>));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_ok</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap</span>(), <span class='string'>&quot;MIHAN191220002&quot;</span>);
+
+<span class='kw'>let</span> <span class='ident'>encoded_result</span>: <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>SLK581Error</span><span class='op'>&gt;</span> <span class='op'>=</span>
+    <span class='ident'>encode</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;O Bare&quot;</span>), <span class='prelude-val'>Some</span>(<span class='string'>&quot;Foo&quot;</span>), <span class='ident'>date_of_birth</span>, <span class='prelude-val'>Some</span>(<span class='string'>&quot;t&quot;</span>));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>is_ok</span>(), <span class='bool-val'>true</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>encoded_result</span>.<span class='ident'>unwrap</span>(), <span class='string'>&quot;BAEOO191220003&quot;</span>);</pre>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "slk581";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
