@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-88ac128001ac3a9a/rosalind-0.9.0/src/gc.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/rosalind-0.10.0/src/gc.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>gc.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -177,8 +178,7 @@
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>use</span> <span class='ident'>RosalindResult</span>;
-
-<span class='kw'>const</span> <span class='ident'>FASTA_LABEL_SYMBOL</span>: <span class='ident'>char</span> <span class='op'>=</span> <span class='string'>&#39;&gt;&#39;</span>;
+<span class='kw'>use</span> <span class='ident'>constants</span>::<span class='ident'>FASTA_LABEL_SYMBOL</span>;
 
 <span class='doccomment'>/// This structure contains info about the string with the highest GC content</span>
 <span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>non_snake_case</span>)]</span>
@@ -239,6 +239,7 @@
 <span class='doccomment'>/// assert_eq!(best_gc_content_in_dataset(dataset).unwrap(),</span>
 <span class='doccomment'>///   GCcontent {string_id: &quot;Rosalind_0808&quot;.to_string(), gc_content: 60.919540f32});</span>
 <span class='doccomment'>/// ```</span>
+<span class='comment'>// TODO: refactor - use utils:parse_fasta_dataset</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>best_gc_content_in_dataset</span>(<span class='ident'>dataset</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RosalindResult</span><span class='op'>&lt;</span><span class='ident'>GCcontent</span><span class='op'>&gt;</span> {
   <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>best_gc_label</span> <span class='op'>=</span> <span class='string'>&quot;&quot;</span>.<span class='ident'>to_string</span>();
   <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>best_gc_content</span> <span class='op'>=</span> <span class='number'>0f32</span>;
@@ -268,9 +269,9 @@
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {
-  <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>gc_content</span>;
-  <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>best_gc_content_in_dataset</span>;
-  <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>GCcontent</span>;
+  <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>gc_content</span>;
+  <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>best_gc_content_in_dataset</span>;
+  <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>GCcontent</span>;
 
   <span class='attribute'>#[<span class='ident'>test</span>]</span>
   <span class='kw'>fn</span> <span class='ident'>it_should_return_0_for_empty_dna_string</span>() {
@@ -328,6 +329,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 
