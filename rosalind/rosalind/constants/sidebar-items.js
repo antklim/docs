@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CODON_STOP_SYMBOL","Terminate symbol to replace codon stop triplets"],["FASTA_LABEL_SYMBOL","First symbol of labels in datasets in FASTA format"]]});

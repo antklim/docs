@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rosalind</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/rosalind/src/lib.rs.html#1-222' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/rosalind/src/lib.rs.html#1-265' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>The <code>rosalind</code> crate provides fuctions to solve probles from <a href="http://rosalind.info/">Rosalind</a> site.</p>
 
 <h1 id='counting-dna-nucleotides' class='section-header'><a href='#counting-dna-nucleotides'>Counting DNA Nucleotides</a></h1>
@@ -170,98 +171,145 @@
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>1</span>, <span class='number'>1</span>, <span class='number'>0</span>).<span class='ident'>unwrap_err</span>(), <span class='ident'>InvalidInputParameters</span>);
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>dominant_allele_probability</span>(<span class='number'>2</span>, <span class='number'>2</span>, <span class='number'>2</span>).<span class='ident'>unwrap</span>(), <span class='number'>0.7833333</span>);</pre>
+
+<h1 id='consensus-and-profile' class='section-header'><a href='#consensus-and-profile'>Consensus and Profile</a></h1>
+<h2 id='examples-9' class='section-header'><a href='#examples-9'>Examples</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>cons</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>prof</span> <span class='op'>=</span> <span class='ident'>Profile</span> {
+    <span class='ident'>A</span>: <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>5</span>, <span class='number'>1</span>, <span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>5</span>, <span class='number'>5</span>, <span class='number'>0</span>, <span class='number'>0</span>],
+    <span class='ident'>C</span>: <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>1</span>, <span class='number'>4</span>, <span class='number'>2</span>, <span class='number'>0</span>, <span class='number'>6</span>, <span class='number'>1</span>],
+    <span class='ident'>G</span>: <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>1</span>, <span class='number'>6</span>, <span class='number'>3</span>, <span class='number'>0</span>, <span class='number'>1</span>, <span class='number'>0</span>, <span class='number'>0</span>],
+    <span class='ident'>T</span>: <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>5</span>, <span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>1</span>, <span class='number'>1</span>, <span class='number'>6</span>],
+};
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>consensus</span>(<span class='ident'>prof</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;ATGCAACT&quot;</span>);</pre>
+
+<h1 id='utilities' class='section-header'><a href='#utilities'>Utilities</a></h1>
+<h2 id='parse-fasta-dataset-into-list-of-strings' class='section-header'><a href='#parse-fasta-dataset-into-list-of-strings'>Parse FASTA dataset into list of Strings</a></h2>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>rosalind</span>::<span class='ident'>utils</span>::<span class='op'>*</span>;
+
+<span class='kw'>let</span> <span class='ident'>fasta_dataset</span> <span class='op'>=</span> <span class='string'>&quot;&gt;Rosalind_1
+    CCTGCGGAAG
+    TCCCACTAAT
+    &gt;Rosalind_2
+    CCATCGGTAG
+    ATATCCATTT
+    &gt;Rosalind_3
+    CCACCCTCGT
+    TGGGAACCTG&quot;</span>;
+
+<span class='kw'>let</span> <span class='ident'>expected_dataset</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[
+    <span class='string'>&quot;CCTGCGGAAGTCCCACTAAT&quot;</span>,
+    <span class='string'>&quot;CCATCGGTAGATATCCATTT&quot;</span>,
+    <span class='string'>&quot;CCACCCTCGTTGGGAACCTG&quot;</span>,
+];
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>parse_fasta_dataset</span>(<span class='ident'>fasta_dataset</span>).<span class='ident'>unwrap</span>(), <span class='ident'>expected_dataset</span>);</pre>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='dna/index.html'
-                               title='rosalind::dna'>dna</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Counting DNA Nucleotides</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='fib/index.html'
-                               title='rosalind::fib'>fib</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Rabbits and Recurrence Relations</code>, <code>Mortal Fibonacci Rabbits</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='gc/index.html'
-                               title='rosalind::gc'>gc</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Computing GC Content</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='hamm/index.html'
-                               title='rosalind::hamm'>hamm</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Counting Point Mutations</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='iprb/index.html'
-                               title='rosalind::iprb'>iprb</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Mendel&#39;s First Law</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='prot/index.html'
-                               title='rosalind::prot'>prot</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein, Calculating Protein Mass</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='revc/index.html'
-                               title='rosalind::revc'>revc</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Complementing a Strand of DNA</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='rna/index.html'
-                               title='rosalind::rna'>rna</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Transcribing DNA into RNA</code></p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='subs/index.html'
-                               title='rosalind::subs'>subs</a></td>
-                        <td class='docblock short'>
-                             <p>Module for <code>Finding a Motif in DNA</code></p>
-                        </td>
-                    </tr>
-                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='cons/index.html'
+                                  title='rosalind::cons'>cons</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Consensus and Profile</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='constants/index.html'
+                                  title='rosalind::constants'>constants</a></td>
+                           <td class='docblock short'>
+                                <p>Module for constants</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='dna/index.html'
+                                  title='rosalind::dna'>dna</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Counting DNA Nucleotides</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='fib/index.html'
+                                  title='rosalind::fib'>fib</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Rabbits and Recurrence Relations</code>, <code>Mortal Fibonacci Rabbits</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='gc/index.html'
+                                  title='rosalind::gc'>gc</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Computing GC Content</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='hamm/index.html'
+                                  title='rosalind::hamm'>hamm</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Counting Point Mutations</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='iprb/index.html'
+                                  title='rosalind::iprb'>iprb</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Mendel&#39;s First Law</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='prot/index.html'
+                                  title='rosalind::prot'>prot</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Translating RNA into Protein, Inferring mRNA from Protein, Calculating Protein Mass</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='revc/index.html'
+                                  title='rosalind::revc'>revc</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Complementing a Strand of DNA</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='rna/index.html'
+                                  title='rosalind::rna'>rna</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Transcribing DNA into RNA</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='subs/index.html'
+                                  title='rosalind::subs'>subs</a></td>
+                           <td class='docblock short'>
+                                <p>Module for <code>Finding a Motif in DNA</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='utils/index.html'
+                                  title='rosalind::utils'>utils</a></td>
+                           <td class='docblock short'>
+                                <p>Module with useful utilities</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.RosalindError.html'
-                               title='rosalind::RosalindError'>RosalindError</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.RosalindError.html'
+                                  title='rosalind::RosalindError'>RosalindError</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='type' href='type.RosalindResult.html'
-                               title='rosalind::RosalindResult'>RosalindResult</a></td>
-                        <td class='docblock short'>
-                             <p>Unified return type for all modules and methods of <code>rosalind</code> library</p>
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.RosalindResult.html'
+                                  title='rosalind::RosalindResult'>RosalindResult</a></td>
+                           <td class='docblock short'>
+                                <p>Unified return type for all modules and methods of <code>rosalind</code> library</p>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -284,6 +332,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

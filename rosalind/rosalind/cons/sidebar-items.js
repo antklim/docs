@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["consensus","This function calculates consensus string by given profile"],["profile","This function calculates profile by given DNA strings"]],"struct":[["Profile","This structure contains profile of DNA strings"]]});
